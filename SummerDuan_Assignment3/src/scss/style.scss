@@ -1,0 +1,316 @@
+// Variables
+$font-elegance: 'Josefin Sans', sans-serif; 
+$color-night-sky: #324360;                   
+$color-inkwell: #111111;                     
+$color-smoke-haze: #989898;                  
+$weight-boldy-bold: 900; 
+
+// Mixins
+@mixin heading-styles($font-size) {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-family: $font-elegance;
+    font-weight: 400;
+    line-height: 1.3em;
+    word-wrap: break-word;
+    color:$color-inkwell;
+    font-size: $font-size;
+}
+
+@mixin smooth-operator($property: all, $duration: .2s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin hidden-treasure {
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    background: #f0f0f0;
+    transition: all 0.2s ease-out;
+}
+
+
+@mixin magic-zoom {
+    transition: transform 3.5s ease-in-out;
+
+    &:hover {
+        transform: scale(1.5,1.5);
+    }
+}
+
+// @media
+@mixin center-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+// start
+body {
+    font-family: 'Quando';
+    font-size: 15px;
+    color: $color-inkwell;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    margin-bottom: 25px;
+    line-height: 1.6em;
+}
+
+a {
+    font-weight: 400;
+    text-decoration: none;
+    color: $color-inkwell;
+    @include smooth-operator(color, .20s);
+
+    &:hover {
+        color: #999999;
+    }
+}
+
+h1 {
+    @include heading-styles(37px);
+}
+
+h2 {
+    @include heading-styles(31px);
+}
+
+h3 {
+    @include heading-styles(26px);
+}
+
+h4 {
+    @include heading-styles(21px);
+}
+
+h5 {
+    @include heading-styles(18px);
+}
+
+h6 {
+    @include heading-styles(15px);
+}
+
+
+.container {
+    width: 94%;
+    margin: 0 auto;
+}
+
+/* header and main nav */
+header {
+    font-family: $font-elegance;
+
+    nav {
+        ul {
+            display: none;
+        }
+    }
+}
+
+.top-logo {
+    width: 200px;
+    margin: 20px auto 40px;
+}
+
+/* posts */
+article {
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-part {
+    margin-bottom: 10px;
+}
+
+.post-title {
+    margin-top: 0;
+
+    a {
+        color: $color-night-sky;
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: $weight-boldy-bold;
+        margin: 15px 0;
+        line-height: 1.3em;
+        @include smooth-operator(all, .3s);
+
+        &:hover {
+            color: #35c4ce;
+        }
+    }
+}
+// footer
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #eaf2ff;
+    color: $color-smoke-haze;
+}
+
+#footer {
+    a {
+        color: $color-smoke-haze;
+
+        &:hover {
+            color: $color-inkwell;
+        }
+    }
+}
+
+.footer-logo {
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.footer-social-links {
+    padding: 20px 0;
+    line-height: 2em;
+
+    a {
+        margin: 0 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        span {
+            display: none;
+        }
+    }
+}
+
+#footer-copyright {
+    padding: 20px 0;
+    font-size: 12px;
+    color: $color-smoke-haze;
+}
+// @media screen
+@media only screen and (min-width: 650px) {
+    .container {
+        width: 90%;
+    }
+
+    header {
+        nav {
+            max-width: 1170px;
+            margin: 0 auto;
+            @include center-stage;
+            height: 60px;
+    
+            ul {
+                display: flex;
+            }
+    
+            li {
+                margin: 0 15px;
+                position: relative;
+                line-height: 24px;
+            }
+    
+            a {
+                font-family: 'Josefin Sans', sans-serif;
+                color: $color-night-sky;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: $weight-boldy-bold;
+    
+                &:hover {
+                    color: #35c4ce;
+                }
+            }
+        }
+    }
+
+    header nav li.menu-item-has-children > a::after {
+        margin-left: 7px;
+        font-family: 'FontAwesome';
+        font-size: 13px;
+        color: $color-night-sky;
+        content: '\f078';
+    }
+    .current-menu-item a {
+        border-bottom: 2px solid $color-night-sky;
+    }
+
+    // sub nav
+    header nav ul ul {
+        @include hidden-treasure;
+    }
+
+    header nav ul li:hover ul {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header nav ul ul li {
+        border-top: 1px solid #e9e9e9;
+        margin: 0;
+    }
+
+    header nav ul ul a {
+        display: block;
+        color: #111111;
+        min-width: 175px;
+        margin: 0;
+        padding: 20px 10px;
+        line-height: 1.4em;
+        letter-spacing: 1px;
+        transition: .35s;
+    }
+
+    header nav ul ul a:hover {
+        background: #ffffff;
+        color: #000; 
+    }
+
+// post
+    article {
+        display: flex;
+    }
+    .image-part {
+        flex: 1;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+    .image-part img {
+        @include magic-zoom;
+    }
+    .image-part img:hover {
+        transform: scale(1.5,1.5);
+    }
+    .content-part {
+        flex: 1;
+        padding-left: 50px;
+    }
+
+    //footer
+    .footer-social-links {
+        a {
+            margin: 0 28px;
+    
+            span {
+                display: inline;
+                font-size: 11px;
+            }
+        }
+    
+        i {
+            margin-right: 5px;
+        }
+    }
+    
+}

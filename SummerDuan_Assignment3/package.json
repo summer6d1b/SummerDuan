@@ -1,0 +1,21 @@
+{
+  "name": "summerduan_assignment3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "summerassignment3": "lite-server --baseDir=\"public\"",
+    "summerdoesmatter":"sass --watch src/scss:public/assets/css",
+    "start": "concurrently \"npm run summerassignment3\" \"npm run summerdoesmatter\""
+
+  },
+  "keywords": [],
+  "author": "summer",
+  "license": "private",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "lite-server": "^2.6.1",
+    "sass": "^1.69.2"
+  }
+}
