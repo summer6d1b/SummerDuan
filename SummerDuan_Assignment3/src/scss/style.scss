@@ -41,7 +41,7 @@ $weight-boldy-bold: 900;
     }
 }
 
-// @media
+// @media mixin
 @mixin center-stage {
     display: flex;
     justify-content: center;
